@@ -35,17 +35,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/*
+ * @Author: zhupengfei
+ * @Date: 2021-09-08 15:07:05
+ * @LastEditTime: 2021-09-08 15:31:42
+ * @LastEditors: zhupengfei
+ * @Description:
+ * @FilePath: /cocos-build/src/main.ts
+ */
 const core = __importStar(__nccwpck_require__(186));
-const wait_1 = __nccwpck_require__(817);
+// import {wait} from './wait'
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const ms = core.getInput('milliseconds');
-            core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-            core.debug(new Date().toTimeString());
-            yield wait_1.wait(parseInt(ms, 10));
-            core.debug(new Date().toTimeString());
-            core.setOutput('time', new Date().toTimeString());
+            const cocosVersion = core.getInput('cocos-version');
+            core.debug(`cocos-version: ${cocosVersion}`);
+            const projectPath = core.getInput('project-path');
+            core.debug(`project-path: ${projectPath}`);
+            // const ms: string = core.getInput('milliseconds')
+            // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+            // core.debug(new Date().toTimeString())
+            // await wait(parseInt(ms, 10))
+            // core.debug(new Date().toTimeString())
+            // core.setOutput('time', new Date().toTimeString())
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }
         catch (error) {
             core.setFailed(error.message);
@@ -53,36 +66,6 @@ function run() {
     });
 }
 run();
-
-
-/***/ }),
-
-/***/ 817:
-/***/ (function(__unused_webpack_module, exports) {
-
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.wait = void 0;
-function wait(milliseconds) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise(resolve => {
-            if (isNaN(milliseconds)) {
-                throw new Error('milliseconds not a number');
-            }
-            setTimeout(() => resolve('done!'), milliseconds);
-        });
-    });
-}
-exports.wait = wait;
 
 
 /***/ }),
