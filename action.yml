@@ -1,11 +1,20 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Cocos Creator Build'
+description: 'A github action for cocos creator build'
+author: 'miggene'
 inputs:
-  milliseconds: # change this
+  cocos-version:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'cocos creator version'
+
+  project-path:
+    required: true
+    description: 'project path for build'
+    default: './'
+
+  # milliseconds: # change this
+  #   required: true
+  #   description: 'input description here'
+  #   default: 'default value if applicable'
 runs:
   using: 'node12'
   main: 'dist/index.js'
