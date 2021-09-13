@@ -3,13 +3,14 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 14:58:18
+ * @LastEditTime: 2021-09-13 15:42:32
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
  */
 import * as core from '@actions/core'
 import axios from 'axios'
+import shell from 'shelljs'
 // import {wait} from './wait'
 
 type CCDownloadType = {version: string; darwin: string; win32: string}
@@ -29,11 +30,16 @@ async function run(): Promise<void> {
         'https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh'
       )
       const {data} = response.data
-      console.log('data :>> ', data)
-      const cocosUrl = (data['2d'] as CCDownloadType[]).find(value => {
+      const ccDownloadItem = (data['2d'] as CCDownloadType[]).find(value => {
         return value.version === cocosVersion
       })
-      console.log('cocosUrl :>> ', cocosUrl)
+      const dlUrl = ccDownloadItem?.darwin
+      shell.exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
+      shell.exec(`unzip CocosCreator_V${cocosVersion}.zip`)
+      shell.exec(`open CocosCreator.app`)
+      // shell.exec(
+      //   `./CocosCreator.app/Contents/MacOS/CocosCreator --path ./ --build`
+      // )
     } catch (error) {
       core.error(error as string)
     }
