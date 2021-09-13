@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 18:04:41
+ * @LastEditTime: 2021-09-13 18:14:33
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -42,9 +42,14 @@ async function run(): Promise<void> {
       await exec(`echo 'unzip start'`)
       await exec(`unzip CocosCreator_V${cocosVersion}.zip`)
       await exec(`echo 'unzip end'`)
+      await exec(`ls -al`)
       await exec(`echo 'open app start'`)
-      await exec(`open CocosCreator.app`)
+      await exec(`open ./CocosCreator.app`)
       await exec(`echo 'open app end'`)
+      await exec(
+        `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`
+      )
+
       // shell.exec(`wget ${dlUrl} -O CocosCreator_V${'2.4.2'}.zip`)
       // shell.exec(`unzip CocosCreator_V${'2.4.2'}.zip`)
       // shell.exec(`open CocosCreator.app`)

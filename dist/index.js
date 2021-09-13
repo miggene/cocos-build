@@ -43,7 +43,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 18:04:41
+ * @LastEditTime: 2021-09-13 18:14:33
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -74,9 +74,11 @@ function run() {
                 yield exec_1.exec(`echo 'unzip start'`);
                 yield exec_1.exec(`unzip CocosCreator_V${cocosVersion}.zip`);
                 yield exec_1.exec(`echo 'unzip end'`);
+                yield exec_1.exec(`ls -al`);
                 yield exec_1.exec(`echo 'open app start'`);
-                yield exec_1.exec(`open CocosCreator.app`);
+                yield exec_1.exec(`open ./CocosCreator.app`);
                 yield exec_1.exec(`echo 'open app end'`);
+                yield exec_1.exec(`./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`);
                 // shell.exec(`wget ${dlUrl} -O CocosCreator_V${'2.4.2'}.zip`)
                 // shell.exec(`unzip CocosCreator_V${'2.4.2'}.zip`)
                 // shell.exec(`open CocosCreator.app`)
