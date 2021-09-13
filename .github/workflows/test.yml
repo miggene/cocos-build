@@ -8,14 +8,14 @@ on:
       - 'releases/*'
 
 jobs:
-  # build: # make sure build/ci work properly
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: |
-  #         npm install
-  #     - run: |
-  #         npm run build && npm run format && npm run lint && npm run package
+  build: # make sure build/ci work properly
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          npm install
+      - run: |
+          npm run build && npm run format && npm run lint && npm run package
   # - run: |
   #     npm run all
   test: # make sure the action works on a clean machine without building

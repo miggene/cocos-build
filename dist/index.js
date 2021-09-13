@@ -38,33 +38,45 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 13:47:27
+ * @LastEditTime: 2021-09-13 14:58:18
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
  */
 const core = __importStar(__nccwpck_require__(2186));
 const axios_1 = __importDefault(__nccwpck_require__(6545));
-// import {wait} from './wait'
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const cocosVersion = core.getInput('cocos-version');
             core.debug(`cocos-version->: ${cocosVersion}`);
+            console.log('cocosVersion :>> ', cocosVersion);
             const projectPath = core.getInput('project-path');
             core.debug(`project-path->: ${projectPath}`);
-            const urls = yield axios_1.default.get('https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh');
-            core.debug(`urls->: ${urls}`);
+            console.log('projectPath :>> ', projectPath);
+            try {
+                const response = yield axios_1.default.get('https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh');
+                const { data } = response.data;
+                console.log('data :>> ', data);
+                const cocosUrl = data['2d'].find(value => {
+                    return value.version === cocosVersion;
+                });
+                console.log('cocosUrl :>> ', cocosUrl);
+            }
+            catch (error) {
+                core.error(error);
+            }
             // const ms: string = core.getInput('milliseconds')
             // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
             // core.debug(new Date().toTimeString())
             // await wait(parseInt(ms, 10))
             // core.debug(new Date().toTimeString())
             // core.setOutput('time', new Date().toTimeString())
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }
         catch (error) {
             core.setFailed(error.message);
