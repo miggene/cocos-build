@@ -41,7 +41,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 13:28:57
+ * @LastEditTime: 2021-09-13 13:47:27
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -53,11 +53,11 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const cocosVersion = core.getInput('cocos-version');
-            core.debug(`cocos-version: ${cocosVersion}`);
+            core.debug(`cocos-version->: ${cocosVersion}`);
             const projectPath = core.getInput('project-path');
-            core.debug(`project-path: ${projectPath}`);
+            core.debug(`project-path->: ${projectPath}`);
             const urls = yield axios_1.default.get('https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh');
-            core.debug(`urls: ${urls}`);
+            core.debug(`urls->: ${urls}`);
             // const ms: string = core.getInput('milliseconds')
             // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
             // core.debug(new Date().toTimeString())
