@@ -3,14 +3,15 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 15:42:32
+ * @LastEditTime: 2021-09-13 18:04:41
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
  */
 import * as core from '@actions/core'
 import axios from 'axios'
-import shell from 'shelljs'
+import {exec} from '@actions/exec'
+
 // import {wait} from './wait'
 
 type CCDownloadType = {version: string; darwin: string; win32: string}
@@ -34,9 +35,19 @@ async function run(): Promise<void> {
         return value.version === cocosVersion
       })
       const dlUrl = ccDownloadItem?.darwin
-      shell.exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
-      shell.exec(`unzip CocosCreator_V${cocosVersion}.zip`)
-      shell.exec(`open CocosCreator.app`)
+      console.log('dlUrl :>> ', dlUrl)
+      await exec(`echo 'download start'`)
+      await exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
+      await exec(`echo 'download end'`)
+      await exec(`echo 'unzip start'`)
+      await exec(`unzip CocosCreator_V${cocosVersion}.zip`)
+      await exec(`echo 'unzip end'`)
+      await exec(`echo 'open app start'`)
+      await exec(`open CocosCreator.app`)
+      await exec(`echo 'open app end'`)
+      // shell.exec(`wget ${dlUrl} -O CocosCreator_V${'2.4.2'}.zip`)
+      // shell.exec(`unzip CocosCreator_V${'2.4.2'}.zip`)
+      // shell.exec(`open CocosCreator.app`)
       // shell.exec(
       //   `./CocosCreator.app/Contents/MacOS/CocosCreator --path ./ --build`
       // )
