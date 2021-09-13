@@ -10,7 +10,7 @@ inputs:
   cocos_version:
     required: true
     description: 'cocos creator version'
-    default: ''
+    default: '0.0.0'
 
   cocos_type:
     required: true

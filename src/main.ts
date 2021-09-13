@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 21:24:26
+ * @LastEditTime: 2021-09-13 21:29:38
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -27,7 +27,7 @@ async function run(): Promise<void> {
       const {data} = await (await axios.get(downloadUrls)).data
       const urlList = data[cocosType] as CCDownloadType[]
       const {version, darwin} =
-        cocosVersion === ''
+        cocosVersion === '0.0.0'
           ? urlList[0]
           : urlList.find(value => {
               return value.version === cocosVersion
