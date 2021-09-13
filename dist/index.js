@@ -38,11 +38,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 21:10:17
+ * @LastEditTime: 2021-09-13 21:24:26
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -61,14 +62,28 @@ function run() {
             try {
                 const { data } = yield (yield axios_1.default.get(downloadUrls)).data;
                 const urlList = data[cocosType];
-                const ccDownloadItem = cocosVersion === ''
+                const { version, darwin } = cocosVersion === ''
                     ? urlList[0]
                     : urlList.find(value => {
                         return value.version === cocosVersion;
                     });
-                const dlUrl = ccDownloadItem.darwin;
-                yield tool_cache_1.downloadTool(dlUrl, `CocosCreator_V${cocosVersion}.zip`);
-                yield tool_cache_1.extractZip(`CocosCreator_V${cocosVersion}.zip`);
+                console.log('version :>> ', version);
+                console.log('darwin :>> ', darwin);
+                // cocosVersion =
+                //   cocosVersion === ''
+                //     ? urlList[0].version
+                //     : urlList.find(value => {
+                //         return value.version === cocosVersion
+                //       })!.version
+                // const ccDownloadItem =
+                //   cocosVersion === ''
+                //     ? urlList[0]
+                //     : urlList.find(value => {
+                //         return value.version === cocosVersion
+                //       })
+                // const dlUrl = ccDownloadItem!.darwin
+                yield tool_cache_1.downloadTool(darwin, `CocosCreator_V${version}.zip`);
+                yield tool_cache_1.extractZip(`CocosCreator_V${version}.zip`);
                 // await exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
                 // await exec(`echo 'download end'`)
                 // await exec(`echo 'unzip start'`)

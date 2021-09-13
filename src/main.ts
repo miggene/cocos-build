@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 21:10:17
+ * @LastEditTime: 2021-09-13 21:24:26
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -25,15 +26,29 @@ async function run(): Promise<void> {
     try {
       const {data} = await (await axios.get(downloadUrls)).data
       const urlList = data[cocosType] as CCDownloadType[]
-      const ccDownloadItem =
+      const {version, darwin} =
         cocosVersion === ''
           ? urlList[0]
           : urlList.find(value => {
               return value.version === cocosVersion
-            })
-      const dlUrl = ccDownloadItem!.darwin
-      await downloadTool(dlUrl, `CocosCreator_V${cocosVersion}.zip`)
-      await extractZip(`CocosCreator_V${cocosVersion}.zip`)
+            })!
+      console.log('version :>> ', version)
+      console.log('darwin :>> ', darwin)
+      // cocosVersion =
+      //   cocosVersion === ''
+      //     ? urlList[0].version
+      //     : urlList.find(value => {
+      //         return value.version === cocosVersion
+      //       })!.version
+      // const ccDownloadItem =
+      //   cocosVersion === ''
+      //     ? urlList[0]
+      //     : urlList.find(value => {
+      //         return value.version === cocosVersion
+      //       })
+      // const dlUrl = ccDownloadItem!.darwin
+      await downloadTool(darwin, `CocosCreator_V${version}.zip`)
+      await extractZip(`CocosCreator_V${version}.zip`)
 
       // await exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
       // await exec(`echo 'download end'`)
