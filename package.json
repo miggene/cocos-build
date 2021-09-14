@@ -1,6 +1,6 @@
 {
   "name": "cocos-build",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": "false",
   "description": "Cocos Creator Build Action",
   "main": "lib/main.js",
@@ -11,7 +11,7 @@
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test && git commit -anm 'build'",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install",
     "release": "standard-version --no-verify"
   },
