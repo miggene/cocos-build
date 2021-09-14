@@ -43,7 +43,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 11:26:50
+ * @LastEditTime: 2021-09-14 11:32:56
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -59,7 +59,7 @@ function run() {
             console.log('downloadUrl :>> ', downloadUrls);
             const cocosVersion = core.getInput('cocos_version');
             const cocosType = core.getInput('cocos_type');
-            const projectPath = core.getInput('project_path');
+            // const projectPath = core.getInput('project_path')
             try {
                 const { data } = yield (yield axios_1.default.get(downloadUrls)).data;
                 console.log('data :>> ', data);
@@ -84,18 +84,22 @@ function run() {
                 //         return value.version === cocosVersion
                 //       })
                 // const dlUrl = ccDownloadItem!.darwin
+                console.log('download start');
                 yield tool_cache_1.downloadTool(darwin, `CocosCreator_V${version}.zip`);
-                yield tool_cache_1.extractZip(`CocosCreator_V${version}.zip`);
+                console.log('download end');
+                // await extractZip(`CocosCreator_V${version}.zip`)
                 // await exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
                 // await exec(`echo 'download end'`)
                 // await exec(`echo 'unzip start'`)
                 // await exec(`unzip CocosCreator_V${cocosVersion}.zip`)
                 // await exec(`echo 'unzip end'`)
                 yield exec_1.exec(`ls -al`);
-                yield exec_1.exec(`echo 'open app start'`);
-                yield exec_1.exec(`open ./CocosCreator.app`);
-                yield exec_1.exec(`echo 'open app end'`);
-                yield exec_1.exec(`./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`);
+                // await exec(`echo 'open app start'`)
+                // await exec(`open ./CocosCreator.app`)
+                // await exec(`echo 'open app end'`)
+                // await exec(
+                //   `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`
+                // )
             }
             catch (error) {
                 core.error(error);
