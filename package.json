@@ -11,9 +11,9 @@
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test && git commit -anm 'build'",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install",
-    "release": "standard-version --no-verify"
+    "release": "git commit -anm 'commit post-build files' && standard-version --no-verify"
   },
   "repository": {
     "type": "git",
