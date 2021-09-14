@@ -43,7 +43,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-13 21:29:38
+ * @LastEditTime: 2021-09-14 10:24:20
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -61,6 +61,7 @@ function run() {
             const projectPath = core.getInput('project_path');
             try {
                 const { data } = yield (yield axios_1.default.get(downloadUrls)).data;
+                console.log('data :>> ', data);
                 const urlList = data[cocosType];
                 const { version, darwin } = cocosVersion === '0.0.0'
                     ? urlList[0]
