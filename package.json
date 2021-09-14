@@ -12,6 +12,7 @@
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
+    "postall": "git add .",
     "prepare": "husky install",
     "release": "standard-version --no-verify"
   },
