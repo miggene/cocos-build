@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 10:49:04
+ * @LastEditTime: 2021-09-14 11:26:50
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -19,7 +19,7 @@ type CCDownloadType = {version: string; darwin: string; win32: string}
 
 async function run(): Promise<void> {
   try {
-    const downloadUrls = core.getInput('cocos_download_urls')
+    const downloadUrls = core.getInput('cocos_download_url')
     console.log('downloadUrl :>> ', downloadUrls)
     const cocosVersion = core.getInput('cocos_version')
     const cocosType = core.getInput('cocos_type')

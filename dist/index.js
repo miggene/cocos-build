@@ -43,7 +43,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 10:49:04
+ * @LastEditTime: 2021-09-14 11:26:50
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -55,7 +55,7 @@ const tool_cache_1 = __nccwpck_require__(7784);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const downloadUrls = core.getInput('cocos_download_urls');
+            const downloadUrls = core.getInput('cocos_download_url');
             console.log('downloadUrl :>> ', downloadUrls);
             const cocosVersion = core.getInput('cocos_version');
             const cocosType = core.getInput('cocos_type');
