@@ -4,7 +4,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 13:07:54
+ * @LastEditTime: 2021-09-14 16:03:17
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -44,7 +44,6 @@ async function run(): Promise<void> {
         `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`
       )
     } catch (error) {
-      console.log('error :>> ', error)
       core.error(error as string)
     }
   } catch (error: any) {
