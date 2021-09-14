@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 16:03:17
+ * @LastEditTime: 2021-09-14 19:33:37
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -26,7 +25,6 @@ async function run(): Promise<void> {
     const projectPath = core.getInput('project_path')
     try {
       const {data} = await (await axios.get(downloadUrls)).data
-      console.log('data :>> ', data)
       const urlList = data[cocosType] as CCDownloadType[]
       const {version, darwin} =
         cocosVersion === '0.0.0'
