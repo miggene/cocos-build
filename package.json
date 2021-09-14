@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
+  "name": "cocos-build",
   "version": "0.0.0",
-  "private": true,
-  "description": "TypeScript template action",
+  "private": "false",
+  "description": "Cocos Creator Build Action",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -11,21 +11,27 @@
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test && git commit -anm 'build'",
+    "prepare": "husky install",
+    "release": "standard-version --no-verify"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/miggene/cocos-build.git"
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "cocos creator",
+    "build"
   ],
-  "author": "",
+  "author": "miggene",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.4.0"
+    "@actions/core": "^1.4.0",
+    "@actions/exec": "^1.1.0",
+    "@actions/tool-cache": "^1.7.1",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.21.4"
   },
   "devDependencies": {
     "@types/node": "^16.3.3",
@@ -34,9 +40,11 @@
     "eslint": "^7.31.0",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-jest": "^24.3.6",
+    "husky": "^7.0.0",
     "jest": "^27.0.6",
     "js-yaml": "^4.1.0",
     "prettier": "2.2.1",
+    "standard-version": "^9.3.1",
     "ts-jest": "^27.0.3",
     "typescript": "^4.1.3"
   }

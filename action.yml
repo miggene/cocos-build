@@ -1,11 +1,27 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Cocos Creator Build'
+description: 'A github action for cocos creator build'
+author: 'miggene'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  cocos_download_url:
+    required: false
+    description: 'cocos creator download urls'
+    default: 'https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh'
+
+  cocos_version:
+    required: false
+    description: 'cocos creator version'
+    default: '0.0.0'
+
+  cocos_type:
+    required: false
+    description: 'cocos creator type(2d/3d)'
+    default: '2d'
+
+  project_path:
+    required: false
+    description: 'project path for build'
+    default: './'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,17 +1,52 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/*
+ * @Author: zhupengfei
+ * @Date: 2021-09-08 15:07:05
+ * @LastEditTime: 2021-09-14 16:03:17
+ * @LastEditors: zhupengfei
+ * @Description:
+ * @FilePath: /cocos-build/src/main.ts
+ */
 import * as core from '@actions/core'
-import {wait} from './wait'
+import axios from 'axios'
+import {exec} from '@actions/exec'
+import {downloadTool, extractZip} from '@actions/tool-cache'
+
+// import {wait} from './wait'
+
+type CCDownloadType = {version: string; darwin: string; win32: string}
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
+    const downloadUrls = core.getInput('cocos_download_url')
+    const cocosVersion = core.getInput('cocos_version')
+    const cocosType = core.getInput('cocos_type')
+    const projectPath = core.getInput('project_path')
+    try {
+      const {data} = await (await axios.get(downloadUrls)).data
+      console.log('data :>> ', data)
+      const urlList = data[cocosType] as CCDownloadType[]
+      const {version, darwin} =
+        cocosVersion === '0.0.0'
+          ? urlList[0]
+          : urlList.find(value => {
+              return value.version === cocosVersion
+            })!
+      const ccZipPath = await downloadTool(
+        darwin,
+        `CocosCreator_V${version}.zip`
+      )
+      await extractZip(`${ccZipPath}`, './')
+      await exec(`open ./CocosCreator.app`)
+      await exec(
+        `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`
+      )
+    } catch (error) {
+      core.error(error as string)
+    }
+  } catch (error: any) {
     core.setFailed(error.message)
   }
 }
