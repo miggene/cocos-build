@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 11:32:56
+ * @LastEditTime: 2021-09-14 11:37:23
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -11,7 +11,7 @@
 import * as core from '@actions/core'
 import axios from 'axios'
 import {exec} from '@actions/exec'
-import {downloadTool} from '@actions/tool-cache'
+import {downloadTool, extractZip} from '@actions/tool-cache'
 
 // import {wait} from './wait'
 
@@ -52,7 +52,7 @@ async function run(): Promise<void> {
       console.log('download start')
       await downloadTool(darwin, `CocosCreator_V${version}.zip`)
       console.log('download end')
-      // await extractZip(`CocosCreator_V${version}.zip`)
+      await extractZip(`./CocosCreator_V${version}.zip`)
 
       // await exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
       // await exec(`echo 'download end'`)
