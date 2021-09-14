@@ -39,12 +39,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 16:03:17
+ * @LastEditTime: 2021-09-14 19:33:37
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -62,7 +61,6 @@ function run() {
             const projectPath = core.getInput('project_path');
             try {
                 const { data } = yield (yield axios_1.default.get(downloadUrls)).data;
-                console.log('data :>> ', data);
                 const urlList = data[cocosType];
                 const { version, darwin } = cocosVersion === '0.0.0'
                     ? urlList[0]
