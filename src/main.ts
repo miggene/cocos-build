@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 11:37:23
+ * @LastEditTime: 2021-09-14 11:45:05
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -50,9 +50,13 @@ async function run(): Promise<void> {
       //       })
       // const dlUrl = ccDownloadItem!.darwin
       console.log('download start')
-      await downloadTool(darwin, `CocosCreator_V${version}.zip`)
-      console.log('download end')
-      await extractZip(`./CocosCreator_V${version}.zip`)
+      const ccZipPath = await downloadTool(
+        darwin,
+        `CocosCreator_V${version}.zip`
+      )
+
+      console.log('download end: ', ccZipPath)
+      await extractZip(`${ccZipPath}`)
 
       // await exec(`wget ${dlUrl} -O CocosCreator_V${cocosVersion}.zip`)
       // await exec(`echo 'download end'`)
