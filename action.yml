@@ -3,22 +3,22 @@ description: 'A github action for cocos creator build'
 author: 'miggene'
 inputs:
   cocos_download_url:
-    required: true
+    required: false
     description: 'cocos creator download urls'
     default: 'https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh'
 
   cocos_version:
-    required: true
+    required: false
     description: 'cocos creator version'
     default: '0.0.0'
 
   cocos_type:
-    required: true
+    required: false
     description: 'cocos creator type(2d/3d)'
     default: '2d'
 
   project_path:
-    required: true
+    required: false
     description: 'project path for build'
     default: './'
 
