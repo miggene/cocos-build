@@ -43,7 +43,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 10:24:20
+ * @LastEditTime: 2021-09-14 10:49:04
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -56,6 +56,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const downloadUrls = core.getInput('cocos_download_urls');
+            console.log('downloadUrl :>> ', downloadUrls);
             const cocosVersion = core.getInput('cocos_version');
             const cocosType = core.getInput('cocos_type');
             const projectPath = core.getInput('project_path');
