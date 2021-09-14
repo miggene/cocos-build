@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 11:53:40
+ * @LastEditTime: 2021-09-14 13:07:54
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -39,7 +40,6 @@ async function run(): Promise<void> {
       )
       await extractZip(`${ccZipPath}`, './')
       await exec(`open ./CocosCreator.app`)
-      // await exec(`echo 'open app end'`)
       await exec(
         `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`
       )
