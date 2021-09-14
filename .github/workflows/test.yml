@@ -1,6 +1,6 @@
 name: 'build-test'
 on:
-  pull_request:
+  # pull_request:
   push:
     branches:
       - develop
@@ -8,19 +8,18 @@ on:
       - 'releases/*'
 
 jobs:
-  prepare:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: |
-          npm install
-      - run: |
-          npm run build && npm run format && npm run lint && npm run package
+  # prepare:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: |
+  #         npm install
+  #     - run: |
+  #         npm run build && npm run format && npm run lint && npm run package
   # - run: |
   #     npm run all
   build: # make sure the action works on a clean machine without building
     runs-on: macos-latest
-    needs: build
     steps:
       - uses: actions/checkout@v2
       - uses: ./
