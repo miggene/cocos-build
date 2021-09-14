@@ -1,4 +1,12 @@
+###
+ # @Author: zhupengfei
+ # @Date: 2021-09-14 20:31:37
+ # @LastEditTime: 2021-09-14 20:34:16
+ # @LastEditors: zhupengfei
+ # @Description: 
+ # @FilePath: /cocos-build/.husky/post-commit
+### 
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-git commit -anm 'commit postpackage files
+git commit -anm 'commit postpackage files'
