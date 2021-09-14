@@ -16,11 +16,6 @@
     "prepare": "husky install",
     "release": "standard-version --no-verify"
   },
-  "standard-version": {
-    "scripts": {
-      "posttag": "git push --follow-tags"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/miggene/cocos-build.git"
