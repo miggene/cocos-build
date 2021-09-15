@@ -1,6 +1,9 @@
 name: 'Cocos Creator Build'
 description: 'A github action for cocos creator build'
 author: 'miggene'
+branding:
+  icon: activity
+  color: blue
 inputs:
   cocos_download_url:
     required: false
