@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-14 21:09:49
+ * @LastEditTime: 2021-09-15 11:10:21
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -12,7 +12,9 @@ import * as core from '@actions/core'
 import axios from 'axios'
 import {exec} from '@actions/exec'
 import {downloadTool, extractZip} from '@actions/tool-cache'
+
 // import {wait} from './wait'
+
 type CCDownloadType = {version: string; darwin: string; win32: string}
 
 async function run(): Promise<void> {
