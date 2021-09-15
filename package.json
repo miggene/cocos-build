@@ -1,6 +1,6 @@
 {
   "name": "cocos-build",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": "false",
   "description": "Cocos Creator Build Action",
   "main": "lib/main.js",
@@ -30,6 +30,7 @@
   "author": "miggene",
   "license": "MIT",
   "dependencies": {
+    "@actions/artifact": "^0.5.2",
     "@actions/core": "^1.4.0",
     "@actions/exec": "^1.1.0",
     "@actions/tool-cache": "^1.7.1",
