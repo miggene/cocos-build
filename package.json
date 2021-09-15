@@ -14,7 +14,9 @@
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "postall": "git add .",
     "prepare": "husky install",
-    "release": "standard-version --no-verify"
+    "release": "standard-version --no-verify",
+    "startrelease": "git flow release start release",
+    "finishrelease": "export GIT_MERGE_AUTOEDIT=no && git flow release finish release -n -p && unset GIT_MERGE_AUTOEDIT"
   },
   "repository": {
     "type": "git",

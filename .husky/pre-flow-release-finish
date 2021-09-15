@@ -1,7 +1,7 @@
 ###
  # @Author: zhupengfei
  # @Date: 2021-09-14 14:14:26
- # @LastEditTime: 2021-09-15 11:06:23
+ # @LastEditTime: 2021-09-15 11:15:27
  # @LastEditors: zhupengfei
  # @Description: 
  # @FilePath: /cocos-build/.husky/pre-flow-release-finish
@@ -9,5 +9,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-export GIT_MERGE_AUTOEDIT=no
 npm run release

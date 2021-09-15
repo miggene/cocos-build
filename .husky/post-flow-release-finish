@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-unset GIT_MERGE_AUTOEDIT
 git push --follow-tags
