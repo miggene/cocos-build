@@ -1,7 +1,7 @@
 ###
  # @Author: zhupengfei
  # @Date: 2021-09-14 21:09:21
- # @LastEditTime: 2021-09-15 09:27:38
+ # @LastEditTime: 2021-09-15 09:30:44
  # @LastEditors: zhupengfei
  # @Description: 
  # @FilePath: /cocos-build/.husky/post-flow-release-finish
@@ -11,7 +11,7 @@
 
 git checkout main 
 git push origin main
-git push --tags
+git push --follow-tags
 git checkout develop
 
 
