@@ -3,9 +3,9 @@ on:
   # pull_request:
   push:
     branches:
-      - develop
-      # - main
-      - 'releases/*'
+      # - develop
+      - main
+      # - 'releases/*'
 
 jobs:
   # prepare:
