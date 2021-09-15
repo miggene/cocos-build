@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-15 11:10:21
+ * @LastEditTime: 2021-09-15 20:01:26
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -23,6 +23,7 @@ async function run(): Promise<void> {
     const cocosVersion = core.getInput('cocos_version')
     const cocosType = core.getInput('cocos_type')
     const projectPath = core.getInput('project_path')
+    const platform = core.getInput('platform')
     try {
       const {data} = await (await axios.get(downloadUrls)).data
       const urlList = data[cocosType] as CCDownloadType[]
@@ -39,7 +40,7 @@ async function run(): Promise<void> {
       await extractZip(`${ccZipPath}`, './')
       await exec(`open ./CocosCreator.app`)
       await exec(
-        `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build`
+        `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform}"`
       )
     } catch (error) {
       core.error(error as string)
