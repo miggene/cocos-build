@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/miggene/cocos-build/compare/v0.0.19...v0.1.0) (2021-09-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **readme:** first release
+
+### Features
+
+* **readme:** a descript for this tool ([8aae056](https://github.com/miggene/cocos-build/commit/8aae0560936e62f13b640cc202ced19f4d1a9d36))
+
 ### [0.0.19](https://github.com/miggene/cocos-build/compare/v0.0.18...v0.0.19) (2021-09-15)
 
 ### [0.0.18](https://github.com/miggene/cocos-build/compare/v0.0.17...v0.0.18) (2021-09-15)
