@@ -3,7 +3,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-15 20:01:26
+ * @LastEditTime: 2021-09-15 20:51:00
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -12,6 +12,7 @@ import * as core from '@actions/core'
 import axios from 'axios'
 import {exec} from '@actions/exec'
 import {downloadTool, extractZip} from '@actions/tool-cache'
+import artifact from '@actions/artifact'
 
 // import {wait} from './wait'
 
@@ -41,6 +42,21 @@ async function run(): Promise<void> {
       await exec(`open ./CocosCreator.app`)
       await exec(
         `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform}"`
+      )
+      const artifactClient = artifact.create()
+      const artifactName = 'cocos-build-package'
+      const files = [`./build/${platform}`]
+      const rootDirectory = '.'
+      // const options = {
+      //   continueOnError: true
+      // }
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const uploadResult = await artifactClient.uploadArtifact(
+        artifactName,
+        files,
+        rootDirectory
+        // options
       )
     } catch (error) {
       core.error(error as string)
