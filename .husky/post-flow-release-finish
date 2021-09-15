@@ -13,5 +13,5 @@ git checkout main
 git push origin main
 git push --follow-tags
 git checkout develop
-
+git push origin develop
 
