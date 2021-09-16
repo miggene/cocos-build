@@ -30,6 +30,11 @@ inputs:
     description: 'platform to build'
     default: 'web-mobile'
 
+  build_path:
+    required: false
+    description: 'build path'
+    default: './build'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
