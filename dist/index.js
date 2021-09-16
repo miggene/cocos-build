@@ -44,7 +44,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-16 10:27:14
+ * @LastEditTime: 2021-09-16 13:23:33
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -77,11 +77,11 @@ function run() {
                 yield exec_1.exec(`./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform}"`);
                 const artifactClient = artifact.create();
                 const artifactName = 'cocos-build-package';
-                const patterns = `build/${platform}/*`;
+                const patterns = `${platform}/*`;
                 const globber = yield glob.create(patterns);
                 const files = yield globber.glob();
                 console.log('files :>> ', files);
-                const rootDirectory = '.';
+                const rootDirectory = './build';
                 // const options = {
                 //   continueOnError: true
                 // }
