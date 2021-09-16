@@ -44,7 +44,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-16 13:32:24
+ * @LastEditTime: 2021-09-16 15:25:40
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -63,6 +63,7 @@ function run() {
             const cocosType = core.getInput('cocos_type');
             const projectPath = core.getInput('project_path');
             const platform = core.getInput('platform');
+            const buildPath = core.getInput('build_path');
             try {
                 const { data } = yield (yield axios_1.default.get(downloadUrls)).data;
                 const urlList = data[cocosType];
@@ -74,14 +75,14 @@ function run() {
                 const ccZipPath = yield tool_cache_1.downloadTool(darwin, `CocosCreator_V${version}.zip`);
                 yield tool_cache_1.extractZip(`${ccZipPath}`, './');
                 yield exec_1.exec(`open ./CocosCreator.app`);
-                yield exec_1.exec(`./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform}"`);
+                yield exec_1.exec(`./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform};buildPath=${buildPath}"`);
                 const artifactClient = artifact.create();
                 const artifactName = 'cocos-build-package';
-                const patterns = `${platform}/*`;
+                const patterns = `./${buildPath}/${platform}`;
                 const globber = yield glob.create(patterns);
                 const files = yield globber.glob();
                 console.log('files :>> ', files);
-                const rootDirectory = './build/';
+                const rootDirectory = `./${buildPath}`;
                 // const options = {
                 //   continueOnError: true
                 // }
