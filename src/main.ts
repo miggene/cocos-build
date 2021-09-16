@@ -4,7 +4,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-16 13:23:33
+ * @LastEditTime: 2021-09-16 13:32:24
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -52,7 +52,7 @@ async function run(): Promise<void> {
       const files = await globber.glob()
       console.log('files :>> ', files)
 
-      const rootDirectory = './build'
+      const rootDirectory = './build/'
       // const options = {
       //   continueOnError: true
       // }
