@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/miggene/cocos-build/compare/v1.2.2...v1.2.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* fix upload artifact config path ([13d5b0e](https://github.com/miggene/cocos-build/commit/13d5b0e7cd2632051e26aa50ac2f66cc67ad164a))
+
 ### [1.2.2](https://github.com/miggene/cocos-build/compare/v1.2.1...v1.2.2) (2021-09-16)
 
 ### [1.2.1](https://github.com/miggene/cocos-build/compare/v1.2.0...v1.2.1) (2021-09-16)

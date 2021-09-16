@@ -4,7 +4,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-16 15:25:40
+ * @LastEditTime: 2021-09-16 15:43:20
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -48,12 +48,12 @@ async function run(): Promise<void> {
       )
       const artifactClient = artifact.create()
       const artifactName = 'cocos-build-package'
-      const patterns = `./${buildPath}/${platform}`
+      const patterns = `${buildPath}/${platform}`
       const globber = await glob.create(patterns)
       const files = await globber.glob()
       console.log('files :>> ', files)
 
-      const rootDirectory = `./${buildPath}`
+      const rootDirectory = `${buildPath}`
       // const options = {
       //   continueOnError: true
       // }

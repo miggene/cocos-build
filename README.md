@@ -1,7 +1,7 @@
 <!--
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-16 15:20:05
+ * @LastEditTime: 2021-09-16 15:43:42
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/README.md
@@ -34,7 +34,7 @@ See [action.yml]()
 steps:
     - uses: actions/checkout@v2
     - name: Cocos Creator Build
-    uses: miggene/cocos-build@v1.2.1
+    uses: miggene/cocos-build@v1.2.3
     with:
         cocos_version: 2.4.5
 ```
