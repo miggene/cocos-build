@@ -4,7 +4,7 @@
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-16 09:43:04
+ * @LastEditTime: 2021-09-16 10:27:14
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -13,7 +13,8 @@ import * as core from '@actions/core'
 import axios from 'axios'
 import {exec} from '@actions/exec'
 import {downloadTool, extractZip} from '@actions/tool-cache'
-import {create} from '@actions/artifact'
+import * as artifact from '@actions/artifact'
+import * as glob from '@actions/glob'
 
 // import {wait} from './wait'
 
@@ -44,9 +45,13 @@ async function run(): Promise<void> {
       await exec(
         `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform}"`
       )
-      const artifactClient = create()
+      const artifactClient = artifact.create()
       const artifactName = 'cocos-build-package'
-      const files = [`./build/${platform}`]
+      const patterns = `build/${platform}/*`
+      const globber = await glob.create(patterns)
+      const files = await globber.glob()
+      console.log('files :>> ', files)
+
       const rootDirectory = '.'
       // const options = {
       //   continueOnError: true
