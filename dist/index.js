@@ -38,12 +38,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * @Author: zhupengfei
  * @Date: 2021-09-08 15:07:05
- * @LastEditTime: 2021-09-15 20:51:00
+ * @LastEditTime: 2021-09-16 09:43:04
  * @LastEditors: zhupengfei
  * @Description:
  * @FilePath: /cocos-build/src/main.ts
@@ -52,7 +53,7 @@ const core = __importStar(__nccwpck_require__(2186));
 const axios_1 = __importDefault(__nccwpck_require__(6545));
 const exec_1 = __nccwpck_require__(1514);
 const tool_cache_1 = __nccwpck_require__(7784);
-const artifact_1 = __importDefault(__nccwpck_require__(2605));
+const artifact_1 = __nccwpck_require__(2605);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -73,17 +74,17 @@ function run() {
                 yield tool_cache_1.extractZip(`${ccZipPath}`, './');
                 yield exec_1.exec(`open ./CocosCreator.app`);
                 yield exec_1.exec(`./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform}"`);
-                const artifactClient = artifact_1.default.create();
+                const artifactClient = artifact_1.create();
                 const artifactName = 'cocos-build-package';
                 const files = [`./build/${platform}`];
                 const rootDirectory = '.';
                 // const options = {
                 //   continueOnError: true
                 // }
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const uploadResult = yield artifactClient.uploadArtifact(artifactName, files, rootDirectory
                 // options
                 );
+                console.log('uploadResult :>> ', uploadResult);
             }
             catch (error) {
                 core.error(error);
